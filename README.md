@@ -68,6 +68,16 @@ sudo chmod 755 /local/game/GameLiftAgent-1.0.jar
 sudo chmod 755 /local/game/[GAME_EXECUTABLE]
 ```
 
+4. If you are running agent from Mac OS X, install setsid utility command that is used by the agent.
+#### MacOS
+If you are using Homebrew,
+```
+brew install util-linux
+sudo ln -s $(brew --prefix util-linux)/bin/setsid /usr/local/bin/
+```
+
+If you are not using Homebrew, you can use [ersatz-setsid](https://github.com/jerrykuch/ersatz-setsid) or [setsid-macosx](https://github.com/tzvetkoff/setsid-macosx).
+
 ### Run the application/jar
 Use the following instructions to run the application:
 1. The standalone jar will be located in `./target/` and can be launched with a command such as the following

@@ -26,6 +26,7 @@ public class OperatingSystemTest {
         assertSame(OperatingSystem.AMAZON_LINUX_2, OperatingSystem.fromString("AMAZON_LINUX_2"));
         assertSame(OperatingSystem.AMAZON_LINUX_2023, OperatingSystem.fromString("AMAZON_LINUX_2023"));
         assertSame(OperatingSystem.UNKNOWN_LINUX, OperatingSystem.fromString("unknown_Linux"));
+        assertSame(OperatingSystem.MAC_OS, OperatingSystem.fromString("MAC_OS"));
         assertSame(OperatingSystem.WIN_2012, OperatingSystem.fromString("win_2012"));
         assertSame(OperatingSystem.INVALID, OperatingSystem.fromString("BURRITO_2022"));
         assertSame(OperatingSystem.INVALID, OperatingSystem.fromString(null));
@@ -46,6 +47,7 @@ public class OperatingSystemTest {
         assertEquals(OperatingSystem.AMAZON_LINUX_2.getOperatingSystemFamily().getOsFamilyName(), "Unix");
         assertEquals(OperatingSystem.AMAZON_LINUX_2023.getOperatingSystemFamily().getOsFamilyName(), "Unix");
         assertEquals(OperatingSystem.UNKNOWN_LINUX.getOperatingSystemFamily().getOsFamilyName(), "Unix");
+        assertEquals(OperatingSystem.MAC_OS.getOperatingSystemFamily().getOsFamilyName(), "Unix");
         assertEquals(OperatingSystem.WIN_2012.getOperatingSystemFamily().getOsFamilyName(), "Windows");
         assertEquals(OperatingSystem.WINDOWS_2019.getOperatingSystemFamily().getOsFamilyName(), "Windows");
         assertEquals(OperatingSystem.WINDOWS_2022.getOperatingSystemFamily().getOsFamilyName(), "Windows");
@@ -63,7 +65,7 @@ public class OperatingSystemTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"AMAZON_LINUX_2", "AMAZON_LINUX_2023"})
+    @ValueSource(strings = {"AMAZON_LINUX_2", "AMAZON_LINUX_2023", "MAC_OS"})
     public void GIVEN_amazonLinux2_WHEN_isLinux_THEN_returnsTrue(String desiredOS) {
         // GIVEN
         OperatingSystem os = OperatingSystem.fromString(desiredOS);

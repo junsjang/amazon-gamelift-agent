@@ -20,6 +20,7 @@ public enum OperatingSystem {
     AMAZON_LINUX_2("Amazon Linux 2", OperatingSystemFamily.LINUX),
     AMAZON_LINUX_2023("Amazon Linux 2023", OperatingSystemFamily.LINUX),
     UNKNOWN_LINUX("Unknown Linux", OperatingSystemFamily.LINUX),
+    MAC_OS("Mac OS", OperatingSystemFamily.LINUX),
     INVALID("Invalid OperatingSystem", OperatingSystemFamily.INVALID);
 
     public static final OperatingSystem DEFAULT_OS = AMAZON_LINUX_2;
@@ -28,6 +29,7 @@ public enum OperatingSystem {
     private static final String WINDOWS_SERVER_2016_NAME = "Windows Server 2016";
     private static final String WINDOWS_SERVER_2019_NAME = "Windows Server 2019";
     private static final String WINDOWS_SERVER_2022_NAME = "Windows Server 2022";
+    private static final String MAC_OS_NAME = "Mac OS";
     private static final String OS_NAME_SYSTEM_PROPERTY = "os.name";
 
     private final String displayName;
@@ -114,6 +116,8 @@ public enum OperatingSystem {
             operatingSystem = AMAZON_LINUX_2;
         } else if (SystemUtils.IS_OS_LINUX) {
             operatingSystem = UNKNOWN_LINUX;
+        } else if (System.getProperty(OS_NAME_SYSTEM_PROPERTY).startsWith(MAC_OS_NAME)) {
+            operatingSystem = MAC_OS;
         } else {
             operatingSystem = INVALID;
         }
